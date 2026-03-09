@@ -1,3 +1,7 @@
+# drawio
+*.png
+*.bkp
+
 # Dependencies
 node_modules/
 npm-debug.log*

@@ -1,0 +1,108 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.5.2 Chrome/142.0.7444.265 Electron/39.6.1 Safari/537.36" version="29.5.2">
+  <diagram name="Página-1" id="Ooh_-xgsDa-itEfZ_Ydo">
+    <mxGraphModel dx="1188" dy="1537" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="#000000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="YFhLgzVa_n3nPtrz0kSG-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="1605" width="1020.5" x="87.25" y="-638.5" as="geometry" />
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-18" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;align=left;verticalAlign=top;fontColor=#FFFFFF;strokeColor=#FFFFFF;" value="SISTEMA -&amp;gt; CRIAR LINK PAGAMENTO" vertex="1">
+          <mxGeometry height="446" width="720" x="237.5" y="-5" as="geometry" />
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;align=left;verticalAlign=top;fontColor=#FFFFFF;strokeColor=#FFFFFF;" value="DASH: TELA CRIAR PRODUTO E PLANOS" vertex="1">
+          <mxGeometry height="315" width="339.5" x="427.75" y="-376" as="geometry" />
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-4" edge="1" parent="1" source="o2QPv2jez71JiQBDQ5uW-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#FFFFFF;strokeColor=#FFFFFF;" target="o2QPv2jez71JiQBDQ5uW-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="506" y="164" />
+              <mxPoint x="506" y="234" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontColor=#FFFFFF;strokeColor=#FFFFFF;fillColor=#1A1A1A;" value="carolina" vertex="1">
+          <mxGeometry height="60" width="120" x="350" y="134" as="geometry" />
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-5" edge="1" parent="1" source="o2QPv2jez71JiQBDQ5uW-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#FFFFFF;strokeColor=#FFFFFF;" target="o2QPv2jez71JiQBDQ5uW-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="506" y="293" />
+              <mxPoint x="506" y="234" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontColor=#FFFFFF;strokeColor=#FFFFFF;fillColor=#1A1A1A;" value="backlog" vertex="1">
+          <mxGeometry height="60" width="120" x="350" y="263" as="geometry" />
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontColor=#FFFFFF;strokeColor=#FFFFFF;fillColor=#1A1A1A;" value="devolve:&lt;div&gt;{&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;linkCheckout: string,&lt;/div&gt;&lt;div&gt;} | se não enviado plano: {&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;linkSelectPlan: string,&lt;br&gt;&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;" vertex="1">
+          <mxGeometry height="136" width="209" x="682" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-6" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontColor=#FFFFFF;" value="POST: { id, produto, ?plano }" vertex="1">
+          <mxGeometry height="30" width="169" x="513" y="203" as="geometry" />
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontColor=#FFFFFF;" value="id: unico do sistema&lt;div&gt;produto: ex. carolina&lt;/div&gt;&lt;div&gt;plano: ex. premium&lt;/div&gt;" vertex="1">
+          <mxGeometry height="66" width="169" x="513" y="233" as="geometry" />
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontColor=#FFFFFF;strokeColor=#FFFFFF;fillColor=#1A1A1A;" value="carolina" vertex="1">
+          <mxGeometry height="103" width="233" x="481" y="-325" as="geometry" />
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontColor=#FFFFFF;strokeColor=#FFFFFF;fillColor=#1A1A1A;" value="plano premium&lt;br&gt;&lt;div&gt;R$70&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="93" x="497" y="-298" as="geometry" />
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontColor=#FFFFFF;strokeColor=#FFFFFF;fillColor=#1A1A1A;" value="plano pro&lt;br&gt;&lt;div&gt;R$120&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="93" x="601" y="-298" as="geometry" />
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontColor=#FFFFFF;strokeColor=#FFFFFF;fillColor=#1A1A1A;" value="backlog" vertex="1">
+          <mxGeometry height="103" width="233" x="481" y="-192" as="geometry" />
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-16" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontColor=#FFFFFF;strokeColor=#FFFFFF;fillColor=#1A1A1A;" value="plano premium&lt;br&gt;&lt;div&gt;R$70&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="93" x="497" y="-165" as="geometry" />
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontColor=#FFFFFF;strokeColor=#FFFFFF;fillColor=#1A1A1A;" value="plano pro&lt;br&gt;&lt;div&gt;R$120&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="93" x="601" y="-165" as="geometry" />
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-20" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;align=left;verticalAlign=top;fontColor=#FFFFFF;strokeColor=#FFFFFF;" value="SISTEMA -&amp;gt; VERIFICAR SE USUARIO ESTÁ COM PLANO ASSINADO" vertex="1">
+          <mxGeometry height="446" width="720" x="237.5" y="489" as="geometry" />
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-21" edge="1" parent="1" source="o2QPv2jez71JiQBDQ5uW-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#FFFFFF;strokeColor=#FFFFFF;" target="o2QPv2jez71JiQBDQ5uW-25">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="506" y="658" />
+              <mxPoint x="506" y="728" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-22" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontColor=#FFFFFF;strokeColor=#FFFFFF;fillColor=#1A1A1A;" value="carolina" vertex="1">
+          <mxGeometry height="60" width="120" x="350" y="628" as="geometry" />
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-23" edge="1" parent="1" source="o2QPv2jez71JiQBDQ5uW-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#FFFFFF;strokeColor=#FFFFFF;" target="o2QPv2jez71JiQBDQ5uW-25">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="506" y="787" />
+              <mxPoint x="506" y="728" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-24" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontColor=#FFFFFF;strokeColor=#FFFFFF;fillColor=#1A1A1A;" value="backlog" vertex="1">
+          <mxGeometry height="60" width="120" x="350" y="757" as="geometry" />
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-25" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontColor=#FFFFFF;strokeColor=#FFFFFF;fillColor=#1A1A1A;" value="devolve:&lt;div&gt;{&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;id: string,&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;status: true,&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;plano: string,&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;produto: string,&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;div style=&quot;&quot;&gt;} | se não ativo: {&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;status: false,&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;linkCheckout: string,&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;}&lt;/div&gt;" vertex="1">
+          <mxGeometry height="183" width="209" x="682" y="637" as="geometry" />
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-26" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontColor=#FFFFFF;" value="POST: { id, produto }" vertex="1">
+          <mxGeometry height="30" width="169" x="513" y="697" as="geometry" />
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-27" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontColor=#FFFFFF;" value="id: unico do sistema&lt;div&gt;produto: ex. carolina&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="66" width="169" x="513" y="727" as="geometry" />
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-28" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=13;fontColor=#FFFFFF;" value="sistemas (carolina, backlog) não se preocupam com nada, apenas consomem duas rotas, verificar se usuário está com plano ativo ou solicitar link para checkout. Lidar com providers, webhooks, verificações fica tudo por conta do oneway gateway" vertex="1">
+          <mxGeometry height="93" width="392" x="401.5" y="-494" as="geometry" />
+        </mxCell>
+        <mxCell id="o2QPv2jez71JiQBDQ5uW-29" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=40;fontStyle=1;fontColor=#FFFFFF;" value="ONEWAY GATEWAY" vertex="1">
+          <mxGeometry height="93" width="574" x="310.5" y="-573" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

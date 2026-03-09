@@ -1,0 +1,26 @@
+{
+	"name": "backend",
+	"type": "module",
+	"scripts": {
+		"lint": "eslint . --cache --fix",
+		"lint:check": "eslint . --cache",
+		"lint:debug": "eslint . --cache --fix --debug"
+	},
+	"dependencies": {
+		"@orpc/server": "^1.13.6",
+		"drizzle-orm": "^0.45.1",
+		"drizzle-zod": "^0.8.3",
+		"ioredis": "^5.10.0",
+		"mercadopago": "^2.12.0",
+		"pg": "^8.20.0",
+		"zod": "^4.3.6"
+	},
+	"devDependencies": {
+		"@orpc/client": "^1.13.6",
+		"@testcontainers/postgresql": "^11.12.0",
+		"@testcontainers/redis": "^11.12.0",
+		"drizzle-kit": "^0.31.9",
+		"tsup": "^8.5.1",
+		"tsx": "^4.21.0"
+	}
+}

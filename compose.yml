@@ -1,0 +1,48 @@
+networks:
+  oneway-network:
+    driver: bridge
+
+volumes:
+  postgres:
+  redis:
+
+services:
+  postgres:
+    container_name: 'postgres'
+    image: 'postgres:18.3-alpine'
+    restart: always
+    environment:
+      - 'POSTGRES_DB=oneway-postgres'
+      - 'POSTGRES_PASSWORD=postgres'
+      - 'POSTGRES_USER=neondb_owner'
+    ports:
+      - '5432:5432'
+    networks:
+      - oneway-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 256M
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U neondb_owner -d oneway-postgres"]
+      interval: 3s
+      timeout: 5s
+      retries: 30
+  redis:
+    container_name: 'redis'
+    image: 'redis:8.6-alpine'
+    ports:
+      - '6379:6379'
+    networks:
+      - oneway-network
+    restart: always
+    volumes:
+      - redis:/data
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 64M

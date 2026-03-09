@@ -3,8 +3,10 @@
 	"type": "module",
 	"scripts": {
 		"lint": "eslint . --cache --fix",
-		"lint:check": "eslint . --cache",
-		"lint:debug": "eslint . --cache --fix --debug"
+		"dev": "tsx watch src/index.ts",
+		"build": "tsup src/index.ts --format esm --clean --sourcemap",
+		"start": "node dist/index.js",
+		"preview": "pnpm build && pnpm start"
 	},
 	"dependencies": {
 		"@orpc/server": "^1.13.6",

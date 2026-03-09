@@ -109,7 +109,7 @@ tmp/
 temp/
 
 # Editor directories and files
-.vscode/*
+.vscode/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json

@@ -13,8 +13,8 @@ services:
     restart: always
     environment:
       - 'POSTGRES_DB=oneway-postgres'
-      - 'POSTGRES_PASSWORD=postgres'
-      - 'POSTGRES_USER=neondb_owner'
+      - 'POSTGRES_PASSWORD=pass'
+      - 'POSTGRES_USER=user'
     ports:
       - '5432:5432'
     networks:
@@ -23,11 +23,11 @@ services:
       resources:
         limits:
           cpus: '0.25'
-          memory: 256M
+          memory: 512M
     volumes:
       - postgres:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U neondb_owner -d oneway-postgres"]
+      test: ["CMD-SHELL", "pg_isready -U user -d oneway-postgres"]
       interval: 3s
       timeout: 5s
       retries: 30

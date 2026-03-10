@@ -6,11 +6,14 @@
 		"dev": "tsx watch src/index.ts",
 		"build": "tsup src/index.ts --format esm --clean --sourcemap",
 		"start": "node dist/index.js",
-		"preview": "pnpm build && pnpm start"
+		"preview": "pnpm build && pnpm start",
+		"drizzle:generate": "drizzle-kit generate"
 	},
 	"dependencies": {
 		"@orpc/server": "^1.13.6",
+		"dotenv": "^17.3.1",
 		"drizzle-orm": "^0.45.1",
+		"drizzle-query-logger": "^1.1.2",
 		"drizzle-zod": "^0.8.3",
 		"ioredis": "^5.10.0",
 		"mercadopago": "^2.12.0",

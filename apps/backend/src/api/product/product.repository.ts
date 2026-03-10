@@ -26,6 +26,7 @@ export async function upsertProduct(input: {
 
   const { id: _id, ...data } = input
   const [created] = await db.insert(products).values(data).returning()
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   return created!
 }
 

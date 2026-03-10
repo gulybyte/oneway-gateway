@@ -41,6 +41,8 @@ export async function runMigrations() {
   await migrate(db, { migrationsFolder: migrationsFolder })
 
   const end = process.hrtime.bigint()
-  const durationMs = Number(end - start) / 1_000_000
-  console.log(`Migrations completed in ${durationMs.toFixed(2)}ms`)
+  const NANOSECONDS_PER_MILLISECOND = 1_000_000
+  const DECIMAL_PLACES = 2
+  const durationMs = Number(end - start) / NANOSECONDS_PER_MILLISECOND
+  console.log(`Migrations completed in ${durationMs.toFixed(DECIMAL_PLACES)}ms`)
 }

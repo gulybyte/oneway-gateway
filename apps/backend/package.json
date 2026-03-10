@@ -8,7 +8,15 @@
 		"start": "node dist/index.js",
 		"preview": "pnpm build && pnpm start",
 		"drizzle:studio": "drizzle-kit studio",
-		"drizzle:generate": "drizzle-kit generate"
+		"drizzle:generate": "drizzle-kit generate",
+		"test:unit": "vitest run --config vitest.config.unit.ts",
+		"test:unit:watch": "vitest --config vitest.config.unit.ts",
+		"test:it": "vitest run --config vitest.config.it.ts",
+		"test:unit:cov": "vitest run --config vitest.config.unit.ts --coverage",
+		"test:it:cov": "vitest run --config vitest.config.it.ts --coverage",
+		"test": "pnpm test:unit & pnpm test:it",
+		"test:cov": "pnpm test:unit:cov & pnpm test:it:cov && pnpm cov:merge",
+		"cov:merge": "istanbul-merge --out coverage/report/coverage-final.json coverage/**/coverage-final.json && NYC_TEMP_DIR=coverage/report nyc report --reporter=html --reporter=text --reporter=lcov --temp-directory=coverage/report --report-dir=coverage/report"
 	},
 	"dependencies": {
 		"@orpc/contract": "^1.13.6",
@@ -28,6 +36,7 @@
 		"@testcontainers/redis": "^11.12.0",
 		"drizzle-kit": "^0.31.9",
 		"tsup": "^8.5.1",
-		"tsx": "^4.21.0"
+		"tsx": "^4.21.0",
+		"vitest": "^4.0.18"
 	}
 }

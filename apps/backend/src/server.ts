@@ -29,7 +29,7 @@ export function orpcServer() {
           res.end('Nenhum procedimento encontrado')
         }
       })
-      .catch((error) => {
+      .catch((_error) => {
         res.statusCode = HTTP_INTERNAL_ERROR
         res.end('Internal server error')
       })

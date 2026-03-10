@@ -18,4 +18,11 @@ CREATE TABLE "products" (
 	CONSTRAINT "products_name_unique" UNIQUE("name")
 );
 --> statement-breakpoint
-ALTER TABLE "plans" ADD CONSTRAINT "plans_product_id_products_id_fk" FOREIGN KEY ("product_id") REFERENCES "public"."products"("id") ON DELETE cascade ON UPDATE no action;
+ALTER TABLE "plans" ADD CONSTRAINT "plans_product_id_products_id_fk" FOREIGN KEY ("product_id") REFERENCES "public"."products"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
+CREATE INDEX "plans_created_at_index" ON "plans" USING btree ("created_at");--> statement-breakpoint
+CREATE INDEX "plans_updated_at_index" ON "plans" USING btree ("updated_at");--> statement-breakpoint
+CREATE INDEX "plans_product_id_index" ON "plans" USING btree ("product_id");--> statement-breakpoint
+CREATE INDEX "plans_name_index" ON "plans" USING btree ("name");--> statement-breakpoint
+CREATE INDEX "products_created_at_index" ON "products" USING btree ("created_at");--> statement-breakpoint
+CREATE INDEX "products_updated_at_index" ON "products" USING btree ("updated_at");--> statement-breakpoint
+CREATE UNIQUE INDEX "products_name_index" ON "products" USING btree ("name");

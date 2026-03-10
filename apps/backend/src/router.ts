@@ -1,3 +1,9 @@
 import { os } from '@orpc/server'
 
-export const appRouter = os.router({})
+import { planRouter } from './api/plan/plan.route'
+import { productRouter } from './api/product/product.route'
+
+export const appRouter = os.router({
+  product: productRouter,
+  plan: planRouter,
+})

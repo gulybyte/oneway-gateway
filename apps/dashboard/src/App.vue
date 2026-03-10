@@ -158,7 +158,7 @@ async function submitPlan() {
 }
 
 onMounted(() => {
-  loadData()
+  void loadData()
 })
 </script>
 

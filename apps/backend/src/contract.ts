@@ -17,9 +17,19 @@ const planRouter = {
   deleteId: oc.input(deletePlan).output(z.void()),
 }
 
+const gatewayRouter = {
+  generateLink: oc
+    .input(z.object({ id: z.string(), productName: z.string(), planName: z.string().optional() }))
+    .output(z.object({ linkCheckout: z.string() })),
+  verifyUser: oc
+    .input(z.object({ id: z.string(), productName: z.string() }))
+    .output(z.object({ status: z.boolean(), linkCheckout: z.string().optional() })),
+}
+
 export const contract = {
   product: productRouter,
   plan: planRouter,
+  gateway: gatewayRouter,
 }
 
 export type AppClientContract = ContractRouterClient<typeof contract>

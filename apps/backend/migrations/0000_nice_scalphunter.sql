@@ -14,7 +14,8 @@ CREATE TABLE "products" (
 	"description" text,
 	"imageLink" text,
 	"created_at" timestamp with time zone DEFAULT timezone('utc', now()) NOT NULL,
-	"updated_at" timestamp with time zone DEFAULT timezone('utc', now()) NOT NULL
+	"updated_at" timestamp with time zone DEFAULT timezone('utc', now()) NOT NULL,
+	CONSTRAINT "products_name_unique" UNIQUE("name")
 );
 --> statement-breakpoint
 ALTER TABLE "plans" ADD CONSTRAINT "plans_product_id_products_id_fk" FOREIGN KEY ("product_id") REFERENCES "public"."products"("id") ON DELETE cascade ON UPDATE no action;

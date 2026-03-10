@@ -7,7 +7,7 @@ const getCurrentUTCDate = (): Date => {
 
 export const products = pgTable('products', {
   id: bigint({ mode: 'number' }).primaryKey().generatedAlwaysAsIdentity(),
-  name: varchar({ length: 255 }).notNull(),
+  name: varchar({ length: 255 }).unique().notNull(),
   description: text(),
   imageLink: text(),
   createdAt: timestamp('created_at', { withTimezone: true })

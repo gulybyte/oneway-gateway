@@ -9,6 +9,7 @@
   "scripts": {
     "lint": "pnpm --parallel lint",
     "linter": "eslint",
+    "full-ci": "pnpm --filter backend test:cov",
     "cov:merge": "istanbul-merge --out coverage/report/coverage-final.json apps/**/coverage/**/coverage-final.json packages/**/coverage/**/coverage-final.json && NYC_TEMP_DIR=coverage/report nyc report --reporter=html --reporter=text --reporter=lcov --temp-directory=coverage/report --report-dir=coverage/report"
   },
   "devDependencies": {

@@ -1,11 +1,13 @@
+import { rpc } from '../../rpc'
+
 import {
   deletePlanById,
   findManyPlans,
   findPlansByProductId,
   upsertPlan as upsertPlanRepo,
 } from './plan.repository'
+
 import type { DeletePlanInput, FindPlansByProductInput, UpsertPlanInput } from './plan.model'
-import { rpc } from '../../rpc'
 
 const planContract = rpc.plan
 

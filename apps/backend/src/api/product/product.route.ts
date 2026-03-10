@@ -1,10 +1,12 @@
-import type { DeleteProductInput, UpsertProductInput } from './product.model'
+import { rpc } from '../../rpc'
+
 import {
   deleteProductById,
   findManyProducts,
   upsertProduct as upsertProductRepo,
 } from './product.repository'
-import { rpc } from '../../rpc'
+
+import type { DeleteProductInput, UpsertProductInput } from './product.model'
 
 const productContract = rpc.product
 
@@ -16,8 +18,10 @@ const upsert = productContract.upsert.handler(async ({ input }: { input: UpsertP
   await upsertProductRepo(input)
 })
 
-const deleteId = productContract.deleteId.handler(async ({ input }: { input: DeleteProductInput }) => {
-  await deleteProductById(input.id)
-})
+const deleteId = productContract.deleteId.handler(
+  async ({ input }: { input: DeleteProductInput }) => {
+    await deleteProductById(input.id)
+  }
+)
 
 export const productRouter = { findMany, upsert, deleteId }

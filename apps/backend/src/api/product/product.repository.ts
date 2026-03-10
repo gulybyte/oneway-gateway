@@ -19,11 +19,7 @@ export async function upsertProduct(input: {
 }) {
   if (input.id != null) {
     const { id, ...data } = input
-    const [updated] = await db
-      .update(products)
-      .set(data)
-      .where(eq(products.id, id))
-      .returning()
+    const [updated] = await db.update(products).set(data).where(eq(products.id, id)).returning()
     if (!updated) throw new ORPCError('NOT_FOUND', { message: 'Produto não encontrado' })
     return updated
   }

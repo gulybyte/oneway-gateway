@@ -151,7 +151,10 @@ async function submitPlan() {
     closePlanModal()
     await loadData()
   } catch (error) {
-    addToast(`Erro ao salvar plano: ${String(error)}`, 'error')
+    const errorMessage = String(error)
+    if (errorMessage.includes('Nome do plano já existe para este produto'))
+      addToast('Nome do plano já existe para este produto', 'error')
+    else addToast(`Erro ao salvar plano: ${errorMessage}`, 'error')
   } finally {
     submittingPlan.value = false
   }

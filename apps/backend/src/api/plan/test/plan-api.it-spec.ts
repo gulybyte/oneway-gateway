@@ -66,6 +66,20 @@ describe('Plan API', () => {
 
       await expect(promise).rejects.toThrow()
     })
+
+    it('should throw CONFLICT when creating plan with existing name for product', async () => {
+      const product = await createDefaultProduct()
+
+      await client.plan.upsert({ productId: Number(product.id), name: 'Plano Único', price: 29.9 })
+
+      const promise = client.plan.upsert({
+        productId: Number(product.id),
+        name: 'Plano Único',
+        price: 39.9,
+      })
+
+      await expect(promise).rejects.toThrow('Nome do plano já existe para este produto')
+    })
   })
 
   describe('upsert (update)', () => {
@@ -95,6 +109,22 @@ describe('Plan API', () => {
       })
 
       await expect(promise).rejects.toThrow()
+    })
+
+    it('should throw CONFLICT when updating plan name to existing name for product', async () => {
+      const product = await createDefaultProduct()
+
+      const plan1 = await createDefaultPlan(Number(product.id), { name: 'Plano A' })
+      const plan2 = await createDefaultPlan(Number(product.id), { name: 'Plano B' })
+
+      const promise = client.plan.upsert({
+        id: Number(plan1.id),
+        productId: Number(product.id),
+        name: 'Plano B',
+        price: 39.9,
+      })
+
+      await expect(promise).rejects.toThrow('Nome do plano já existe para este produto')
     })
   })
 

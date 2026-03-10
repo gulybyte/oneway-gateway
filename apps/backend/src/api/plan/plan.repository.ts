@@ -27,14 +27,28 @@ export async function upsertPlan(input: {
 }) {
   if (input.id != null) {
     const { id, ...data } = input
-    const [updated] = await db.update(plans).set(data).where(eq(plans.id, id)).returning()
-    if (!updated) throw new ORPCError('NOT_FOUND', { message: 'Plano não encontrado' })
-    return updated
+    try {
+      const [updated] = await db.update(plans).set(data).where(eq(plans.id, id)).returning()
+      if (!updated) throw new ORPCError('NOT_FOUND', { message: 'Plano não encontrado' })
+      return updated
+    } catch (error: any) {
+      if (error.cause?.code === '23505')
+        throw new ORPCError('BAD_REQUEST', { message: 'Nome do plano já existe para este produto' })
+
+      throw error
+    }
   }
 
   const { id: _id, ...data } = input
-  const [created] = await db.insert(plans).values(data).returning()
-  return created!
+  try {
+    const [created] = await db.insert(plans).values(data).returning()
+    return created!
+  } catch (error: any) {
+    if (error.cause?.code === '23505')
+      throw new ORPCError('BAD_REQUEST', { message: 'Nome do plano já existe para este produto' })
+
+    throw error
+  }
 }
 
 export async function deletePlanById(id: number) {

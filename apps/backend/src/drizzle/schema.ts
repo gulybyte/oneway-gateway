@@ -55,6 +55,7 @@ export const plans = pgTable(
     index().on(t.updatedAt),
     index().on(t.productId),
     index().on(t.name),
+    uniqueIndex().on(t.productId, t.name),
   ]
 )
 

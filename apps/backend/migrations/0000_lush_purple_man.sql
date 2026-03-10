@@ -23,6 +23,7 @@ CREATE INDEX "plans_created_at_index" ON "plans" USING btree ("created_at");--> 
 CREATE INDEX "plans_updated_at_index" ON "plans" USING btree ("updated_at");--> statement-breakpoint
 CREATE INDEX "plans_product_id_index" ON "plans" USING btree ("product_id");--> statement-breakpoint
 CREATE INDEX "plans_name_index" ON "plans" USING btree ("name");--> statement-breakpoint
+CREATE UNIQUE INDEX "plans_product_id_name_index" ON "plans" USING btree ("product_id","name");--> statement-breakpoint
 CREATE INDEX "products_created_at_index" ON "products" USING btree ("created_at");--> statement-breakpoint
 CREATE INDEX "products_updated_at_index" ON "products" USING btree ("updated_at");--> statement-breakpoint
 CREATE UNIQUE INDEX "products_name_index" ON "products" USING btree ("name");

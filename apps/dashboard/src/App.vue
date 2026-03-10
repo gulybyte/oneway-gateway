@@ -41,7 +41,6 @@ const productForm = reactive({
   imageLink: '',
 })
 const planForm = reactive({
-  id: null as number | null,
   productId: 0,
   name: '',
   description: '',
@@ -63,11 +62,10 @@ function closeProductModal() {
   productModalRef.value?.close()
 }
 
-function openPlanModal(productId: number = 0, plan?: Plan) {
-  planForm.id = plan?.id ?? null
-  planForm.name = plan?.name ?? ''
-  planForm.description = plan?.description ?? ''
-  planForm.price = plan?.price?.toString() ?? ''
+function openPlanModal(productId: number = 0) {
+  planForm.name = ''
+  planForm.description = ''
+  planForm.price = ''
   if (productId) planForm.productId = productId
   else if (products.value.length > 0) planForm.productId = products.value[0].id
 
@@ -138,16 +136,15 @@ async function submitPlan() {
   }
   submittingPlan.value = true
   try {
-    const payload: any = {
+    const payload = {
       productId: planForm.productId,
       name: planForm.name,
       description: planForm.description || null,
       price: parsedPrice,
     }
-    if (planForm.id) payload.id = planForm.id
 
-    await backend.plan.upsert(payload)
-    addToast(planForm.id ? 'Plano atualizado com sucesso!' : 'Plano criado com sucesso!', 'success')
+    await backend.plan.insert(payload)
+    addToast('Plano criado com sucesso!', 'success')
     closePlanModal()
     await loadData()
   } catch (error) {
@@ -371,26 +368,7 @@ onMounted(() => {
                       >
                         {{ plan.name }}
                       </h5>
-                      <button
-                        @click="() => openPlanModal(product.id, plan)"
-                        class="btn btn-xs btn-ghost btn-square mt-0.5 opacity-0 group-hover/plan:opacity-100 hover:bg-neutral hover:text-neutral-content text-base-content/50 transition-opacity"
-                        title="Editar Plano"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="2"
-                          stroke="currentColor"
-                          class="w-4 h-4"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
-                          />
-                        </svg>
-                      </button>
+                      <!-- no edit button -->
                     </div>
                     <p
                       v-if="plan.description"
@@ -453,6 +431,7 @@ onMounted(() => {
             class="input border border-base-300 border-base-300 focus:border-neutral rounded-sm w-full"
             placeholder="Ex: Acesso Premium"
             required
+            :disabled="!!productForm.id"
           />
         </fieldset>
 
@@ -508,7 +487,7 @@ onMounted(() => {
     >
       <div class="bg-primary text-primary-content p-5 flex justify-between items-center">
         <h3 class="font-extrabold text-xl uppercase tracking-tight">
-          {{ planForm.id ? 'Editar Oferta' : 'Nova Oferta' }}
+          Nova Oferta
         </h3>
         <form method="dialog">
           <button

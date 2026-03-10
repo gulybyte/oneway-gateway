@@ -8,7 +8,14 @@ export async function createDefaultPlan(
 ) {
   const [plan] = await tdb
     .insert(sc.plans)
-    .values({ productId, name: 'Plano Padrão', price: 19.9, ...overrides })
+    .values({
+      productId,
+      name: 'Plano Padrão',
+      price: 19.9,
+      providerId: `plan-${Date.now()}-${Math.random()}`,
+      meta: {},
+      ...overrides,
+    })
     .returning()
   return plan!
 }

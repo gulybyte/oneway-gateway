@@ -8,6 +8,7 @@ import {
   varchar,
   index,
   uniqueIndex,
+  json,
 } from 'drizzle-orm/pg-core'
 
 const getCurrentUTCDate = (): Date => {
@@ -37,11 +38,13 @@ export const plans = pgTable(
   {
     id: bigint({ mode: 'number' }).primaryKey().generatedAlwaysAsIdentity(),
     productId: bigint('product_id', { mode: 'number' })
-      .references(() => products.id, { onDelete: 'cascade' })
+      .references(() => products.id, { onDelete: 'restrict' })
       .notNull(),
     name: varchar({ length: 255 }).notNull(),
     description: text(),
     price: numeric({ mode: 'number', precision: 10, scale: 2 }).notNull(),
+    providerId: varchar('provider_id', { length: 255 }).notNull().unique(),
+    meta: json(),
     createdAt: timestamp('created_at', { withTimezone: true })
       .default(sql`timezone('utc', now())`)
       .notNull(),

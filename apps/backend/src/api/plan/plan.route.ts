@@ -1,13 +1,14 @@
 import { rpc } from '../../rpc'
+import { createPlan } from '../gateway/gateway.service'
+import { findProductById } from '../product/product.repository'
 
 import {
-  deletePlanById,
   findManyPlans,
   findPlansByProductId,
-  upsertPlan as upsertPlanRepo,
+  insertPlan as insertPlanRepo,
 } from './plan.repository'
 
-import type { DeletePlanInput, FindPlansByProductInput, UpsertPlanInput } from './plan.model'
+import type { FindPlansByProductInput, InsertPlanInput } from './plan.model'
 
 const planContract = rpc.plan
 
@@ -21,12 +22,14 @@ const findByProduct = planContract.findByProduct.handler(
   }
 )
 
-const upsert = planContract.upsert.handler(async ({ input }: { input: UpsertPlanInput }) => {
-  await upsertPlanRepo(input)
+const insert = planContract.insert.handler(async ({ input }: { input: InsertPlanInput }) => {
+  const product = await findProductById(input.productId)
+
+  const namePlan = product.name + ' - ' + input.name
+  const planProvider = await createPlan(namePlan, input.price)
+
+  const planInput = { ...input, providerId: planProvider.id, meta: planProvider.meta }
+  await insertPlanRepo(planInput)
 })
 
-const deleteId = planContract.deleteId.handler(async ({ input }: { input: DeletePlanInput }) => {
-  await deletePlanById(input.id)
-})
-
-export const planRouter = { findMany, findByProduct, upsert, deleteId }
+export const planRouter = { findMany, findByProduct, insert }

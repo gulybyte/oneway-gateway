@@ -84,21 +84,4 @@ describe('Product API', () => {
       await expect(promise).rejects.toThrow()
     })
   })
-
-  describe('deleteId', () => {
-    it('should delete an existing product', async () => {
-      const created = await createDefaultProduct()
-
-      await client.product.deleteId({ id: Number(created.id) })
-
-      const products = await client.product.findMany()
-      expect(products).toHaveLength(0)
-    })
-
-    it('should throw NOT_FOUND when deleting non-existent product', async () => {
-      const promise = client.product.deleteId({ id: 99999 })
-
-      await expect(promise).rejects.toThrow()
-    })
-  })
 })

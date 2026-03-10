@@ -11,6 +11,14 @@ export async function findManyProducts() {
   })
 }
 
+export async function findProductById(id: number) {
+  const product = await db.query.products.findFirst({
+    where: eq(products.id, id),
+  })
+  if (!product) throw new ORPCError('NOT_FOUND', { message: 'Produto não encontrado' })
+  return product
+}
+
 export async function upsertProduct(input: {
   id?: number
   name: string
@@ -28,10 +36,4 @@ export async function upsertProduct(input: {
   const [created] = await db.insert(products).values(data).returning()
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   return created!
-}
-
-export async function deleteProductById(id: number) {
-  const [deleted] = await db.delete(products).where(eq(products.id, id)).returning()
-  if (!deleted) throw new ORPCError('NOT_FOUND', { message: 'Produto não encontrado' })
-  return deleted
 }

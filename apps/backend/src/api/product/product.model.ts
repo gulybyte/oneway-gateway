@@ -17,7 +17,4 @@ export const upsertProduct = createInsertSchema(products)
 
 export const selectProduct = createSelectSchema(products)
 
-export const deleteProduct = z.object({ id: z.number() }).strict()
-
 export type UpsertProductInput = z.infer<typeof upsertProduct>
-export type DeleteProductInput = z.infer<typeof deleteProduct>

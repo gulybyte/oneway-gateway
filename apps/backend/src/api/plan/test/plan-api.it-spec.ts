@@ -49,12 +49,12 @@ describe('Plan API', () => {
     })
   })
 
-  describe('upsert (create)', () => {
+  describe('insert', () => {
     it('should create a new plan', async () => {
       const product = await createDefaultProduct()
       const input = { productId: Number(product.id), name: 'Novo Plano', price: 29.9 }
 
-      await client.plan.upsert(input)
+      await client.plan.insert(input)
 
       const plans = await client.plan.findByProduct({ productId: Number(product.id) })
       expect(plans).toHaveLength(1)
@@ -62,7 +62,7 @@ describe('Plan API', () => {
     })
 
     it('should throw when productId does not exist', async () => {
-      const promise = client.plan.upsert({ productId: 99999, name: 'Plano', price: 10 })
+      const promise = client.plan.insert({ productId: 99999, name: 'Plano', price: 10 })
 
       await expect(promise).rejects.toThrow()
     })
@@ -70,78 +70,15 @@ describe('Plan API', () => {
     it('should throw CONFLICT when creating plan with existing name for product', async () => {
       const product = await createDefaultProduct()
 
-      await client.plan.upsert({ productId: Number(product.id), name: 'Plano Único', price: 29.9 })
+      await client.plan.insert({ productId: Number(product.id), name: 'Plano Único', price: 29.9 })
 
-      const promise = client.plan.upsert({
+      const promise = client.plan.insert({
         productId: Number(product.id),
         name: 'Plano Único',
         price: 39.9,
       })
 
       await expect(promise).rejects.toThrow('Nome do plano já existe para este produto')
-    })
-  })
-
-  describe('upsert (update)', () => {
-    it('should update an existing plan', async () => {
-      const { product, plan } = await createDefaultProductWithPlan()
-
-      await client.plan.upsert({
-        id: Number(plan.id),
-        productId: Number(product.id),
-        name: 'Plano Atualizado',
-        price: 39.9,
-      })
-
-      const plans = await client.plan.findByProduct({ productId: Number(product.id) })
-      expect(plans[0]!.name).toBe('Plano Atualizado')
-      expect(plans[0]!.price).toBe(39.9)
-    })
-
-    it('should throw NOT_FOUND when updating non-existent plan', async () => {
-      const product = await createDefaultProduct()
-
-      const promise = client.plan.upsert({
-        id: 99999,
-        productId: Number(product.id),
-        name: 'Inexistente',
-        price: 10,
-      })
-
-      await expect(promise).rejects.toThrow()
-    })
-
-    it('should throw CONFLICT when updating plan name to existing name for product', async () => {
-      const product = await createDefaultProduct()
-
-      const plan1 = await createDefaultPlan(Number(product.id), { name: 'Plano A' })
-      const plan2 = await createDefaultPlan(Number(product.id), { name: 'Plano B' })
-
-      const promise = client.plan.upsert({
-        id: Number(plan1.id),
-        productId: Number(product.id),
-        name: 'Plano B',
-        price: 39.9,
-      })
-
-      await expect(promise).rejects.toThrow('Nome do plano já existe para este produto')
-    })
-  })
-
-  describe('deleteId', () => {
-    it('should delete an existing plan', async () => {
-      const { product, plan } = await createDefaultProductWithPlan()
-
-      await client.plan.deleteId({ id: Number(plan.id) })
-
-      const plans = await client.plan.findByProduct({ productId: Number(product.id) })
-      expect(plans).toHaveLength(0)
-    })
-
-    it('should throw NOT_FOUND when deleting non-existent plan', async () => {
-      const promise = client.plan.deleteId({ id: 99999 })
-
-      await expect(promise).rejects.toThrow()
     })
   })
 })

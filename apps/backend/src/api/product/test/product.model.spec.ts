@@ -1,4 +1,4 @@
-import { upsertProduct, deleteProduct } from '../product.model'
+import { upsertProduct } from '../product.model'
 
 describe('upsertProduct', () => {
   const validProduct = { name: 'Produto Teste' }
@@ -34,28 +34,6 @@ describe('upsertProduct', () => {
 
   it('should reject extra fields', () => {
     const result = upsertProduct.safeParse({ ...validProduct, extraField: 'x' })
-    expect(result.success).toBe(false)
-  })
-})
-
-describe('deleteProduct', () => {
-  it('should accept valid id', () => {
-    const result = deleteProduct.safeParse({ id: 1 })
-    expect(result.success).toBe(true)
-  })
-
-  it('should reject missing id', () => {
-    const result = deleteProduct.safeParse({})
-    expect(result.success).toBe(false)
-  })
-
-  it('should reject string id', () => {
-    const result = deleteProduct.safeParse({ id: 'abc' })
-    expect(result.success).toBe(false)
-  })
-
-  it('should reject extra fields', () => {
-    const result = deleteProduct.safeParse({ id: 1, extra: true })
     expect(result.success).toBe(false)
   })
 })
